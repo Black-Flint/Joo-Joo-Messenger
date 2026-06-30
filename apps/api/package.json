@@ -1,16 +1,16 @@
 {
-  "name": "@joo-joo-messenger/api",
-  "private": true,
-  "scripts": {
-    "dev": "bun run --watch src/index.ts",
-    "build": "bun build src/index.ts --outdir dist --target bun --minify",
-    "start": "bun run dist/index.js"
-  },
-  "dependencies": {
-    "@joo-joo-messenger/schemas": "workspace:*",
-    "elysia": "^1.4.29"
-  },
-  "devDependencies": {
-    "bun-types": "^1.3.4"
-  }
+	"name": "@joo-joo-messenger/api",
+	"private": true,
+	"scripts": {
+		"dev": "bun run --watch src/index.ts",
+		"build": "bun build src/index.ts --outdir dist --target bun --minify",
+		"start": "bun run dist/index.js"
+	},
+	"dependencies": {
+		"@joo-joo-messenger/schemas": "workspace:*",
+		"elysia": "^1.4.29"
+	},
+	"devDependencies": {
+		"bun-types": "^1.3.4"
+	}
 }

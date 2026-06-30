@@ -1,10 +1,16 @@
 {
-    "name": "joo-joo-messenger",
-    "private": true,
-    "workspaces": ["apps/*", "packages/*"],
-    "packageManager": "bun",
-    "devDependencies": {
-        "@biomejs/biome": "^2.5.1"
-    },
-    "scripts": {}
+	"name": "joo-joo-messenger",
+	"private": true,
+	"workspaces": [
+		"apps/*",
+		"packages/*"
+	],
+	"packageManager": "bun",
+	"devDependencies": {
+		"@biomejs/biome": "2.5.1"
+	},
+	"scripts": {
+		"check": "biome check .",
+		"check:fix": "biome check --write ."
+	}
 }
