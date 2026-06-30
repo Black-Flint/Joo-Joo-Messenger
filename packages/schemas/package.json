@@ -1,0 +1,8 @@
+{
+    "name": "@joo-joo-messenger/schemas",
+    "private": true,
+    "type": "module",
+    "exports": {
+        ".": "./index.ts"
+    }
+}

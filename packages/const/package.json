@@ -1,0 +1,8 @@
+{
+    "name": "@joo-joo-messenger/const",
+    "private": true,
+    "type": "module",
+    "exports": {
+        ".": "./index.ts"
+    }
+}
