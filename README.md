@@ -201,16 +201,39 @@ bun run dev:web
 
 ## Project Structure
 
-```
-apps/
-├── api/
-└── web/
-
-packages/
-
-docs/
-
-infra/
+```.
+├── .github/
+├── apps/
+│   ├── api/
+│   └── web/
+├── docs/
+│   ├── architecture/
+│   ├── development/
+│   ├── images/
+│   ├── roadmap/
+│   └── security/
+├── infra/
+│   ├── docker/
+│   └── nginx/
+├── packages/
+│   ├── constants/
+│   ├── schemas/
+│   └── validators/
+├── .dockerignore
+├── .editorconfig
+├── .env.example
+├── .gitignore
+├── biome.json
+├── bun.lock
+├── docker-compose.dev.yml
+├── docker-compose.prod.yml
+├── package.json
+├── CODE_OF_CONDUCT.md
+├── CONTRIBUTING.md
+├── LICENSE
+├── README.md
+├── SECURITY.md
+└── SUPPORT.md
 ```
 
 For more information about the project architecture, see the documentation inside the `docs/` directory.
