@@ -1,3 +1,7 @@
+> [!IMPORTANT]
+> Joo-Joo Messenger is currently under active development.
+> Security reports are still highly appreciated, even if the affected feature is experimental or not yet production-ready.
+
 # Security Policy
 
 Thank you for helping keep Joo-Joo Messenger secure.
@@ -16,19 +20,23 @@ At this stage of development, only the latest version on the `develop` branch is
 
 Please **do not** report security vulnerabilities through public GitHub Issues or Discussions.
 
-Instead, contact the maintainers privately with:
+Instead, use GitHub's **Private Vulnerability Reporting** feature to securely disclose the issue to the maintainers.
 
-* A clear description of the issue
-* Steps to reproduce
-* Potential impact
-* Any suggested mitigation (if known)
+When submitting a report, please include:
+
+- A clear description of the issue
+- Steps to reproduce
+- Potential impact
+- Any suggested mitigation (if known)
 
 We will:
 
-* Acknowledge your report as soon as possible.
-* Investigate the issue.
-* Keep you informed throughout the process.
-* Release a fix as quickly as possible.
+- Acknowledge your report as soon as possible
+- Investigate the issue
+- Keep you informed throughout the process
+- Release a fix as quickly as possible
+
+If GitHub Private Vulnerability Reporting is unavailable for any reason, please contact the maintainers directly.
 
 ---
 

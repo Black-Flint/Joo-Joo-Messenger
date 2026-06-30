@@ -312,7 +312,7 @@ The long-term roadmap is maintained separately inside the documentation.
 
 See:
 
-**docs/roadmap.md**
+**docs/roadmap/roadmap.md**
 
 ---
 

@@ -175,8 +175,8 @@ Commit messages should:
 Before opening a Pull Request, run:
 
 ```bash
-bun run format
-bun run lint
+bun run check:fix
+bun run check
 ```
 
 Please ensure the project builds successfully before submitting your changes.

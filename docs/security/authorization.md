@@ -1,3 +1,8 @@
+> [!WARNING]
+> This document describes the planned security architecture.
+>
+> It is a design specification and has not been fully implemented yet.
+
 # Authorization
 
 ## Overview
