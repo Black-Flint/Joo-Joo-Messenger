@@ -4,11 +4,10 @@ WORKDIR /app
 
 COPY package.json bun.lock ./
 COPY apps/web/package.json ./apps/web/
+COPY apps/api/package.json ./apps/api/
 COPY packages ./packages
 
-# RUN bun install --frozen-lockfile --filter @joo-joo-messenger/web
-
-RUN bun install --filter @joo-joo-messenger/web
+RUN bun install --frozen-lockfile --filter @joo-joo-messenger/web
 
 COPY . .
 
