@@ -6,9 +6,7 @@ COPY package.json bun.lock ./
 COPY apps ./apps
 COPY packages ./packages
 
-# RUN bun install --frozen-lockfile
-
-RUN bun install
+RUN bun install --frozen-lockfile --filter @joo-joo-messenger/api
 
 FROM base AS build
 

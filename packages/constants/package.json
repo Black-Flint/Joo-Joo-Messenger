@@ -1,5 +1,5 @@
 {
-	"name": "@joo-joo-messenger/const",
+	"name": "@joo-joo-messenger/constants",
 	"private": true,
 	"type": "module",
 	"exports": {
