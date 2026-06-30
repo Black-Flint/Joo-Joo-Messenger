@@ -4,7 +4,7 @@ name: Task
 about: Technical task, refactoring, documentation, or maintenance work
 title: "[Task]: "
 labels: task
-------------
+---
 
 # Summary
 

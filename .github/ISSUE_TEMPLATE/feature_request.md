@@ -4,7 +4,7 @@ name: Feature Request
 about: Suggest an improvement or a new feature
 title: "[Feature]: "
 labels: enhancement
--------------------
+---
 
 # Feature Request
 

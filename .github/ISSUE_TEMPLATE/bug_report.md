@@ -4,7 +4,7 @@ name: Bug Report
 about: Report a bug in Joo-Joo Messenger
 title: "[Bug]: "
 labels: bug
------------
+---
 
 # Bug Report
 
