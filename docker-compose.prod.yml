@@ -1,0 +1,43 @@
+networks:
+  app-network:
+    driver: bridge
+
+# Persistent Volumes
+volumes:
+  postgres_data: # Persistent storage for PostgreSQL
+    name: joo-joo-postgres-data
+
+services:
+  # PostgreSQL Database Service
+  postgres:
+    image: postgres:17-bookworm # Stable PostgreSQL image (Debian-based)
+    container_name: joo-joo-postgres
+
+    restart: always # Restart always
+
+    expose:
+      - "5432"
+
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data # Persist database data
+
+    networks:
+      - app-network # Internal app network
+
+    logging:
+      driver: json-file # Default Docker logging driver
+      options:
+        max-size: "10m" # Rotate logs after 10MB
+        max-file: "5" # Keep max 5 log files

@@ -1,0 +1,46 @@
+# Git
+.git
+.github
+
+# Dependencies
+node_modules
+**/node_modules
+
+# Build
+.next
+**/.next
+**/dist
+**/build
+**/out
+**/.turbo
+
+# Coverage
+coverage
+**/coverage
+
+# Environment
+.env
+.env.*
+!.env.production
+
+# Editors
+.vscode
+.idea
+
+# Documentation
+README.md
+docs
+
+# Logs
+*.log
+*.log.*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+docker-compose*.yml
+
+# Misc
+.gitignore
