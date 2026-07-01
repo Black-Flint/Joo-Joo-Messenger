@@ -1,0 +1,203 @@
+# ADR-0001: Core Architecture Principles
+
+**Status:** Accepted
+
+**Date:** 2026-07-01
+
+---
+
+# Context
+
+Joo-Joo Messenger is an open-source messaging platform built around three core principles:
+
+* Privacy
+* Security
+* Community ownership
+
+The project is not intended to become another centralized messaging service controlled by a single company. Instead, it aims to provide a platform that anyone can inspect, modify, contribute to, and self-host.
+
+Every architectural decision should support these principles while keeping the project maintainable for both maintainers and contributors.
+
+---
+
+# Vision
+
+> **A privacy-first, secure and self-hosted messaging platform built by the community, for the community.**
+
+Joo-Joo Messenger should allow individuals, organizations, and communities to run their own independent messaging infrastructure without depending on a central authority.
+
+---
+
+# Decision
+
+The project adopts the following core architectural principles.
+
+## 1. Open Source First
+
+The project is developed entirely in the open.
+
+Architecture, implementation, discussions, and future decisions should be transparent whenever possible.
+
+Community contributions are considered a fundamental part of the project's growth.
+
+---
+
+## 2. Self-Hosting First
+
+Every major feature should be designed with self-hosting in mind.
+
+Running Joo-Joo Messenger should not require any proprietary cloud service.
+
+Users should be able to deploy the entire platform inside their own infrastructure, including private networks.
+
+---
+
+## 3. Privacy Before Convenience
+
+Privacy is considered a product requirement rather than an optional feature.
+
+When architectural trade-offs arise, privacy should take priority over convenience whenever reasonably possible.
+
+Examples include:
+
+* Minimal data collection
+* Secure authentication
+* Secure session management
+* Local infrastructure ownership
+* Future support for end-to-end encryption
+
+---
+
+## 4. Security By Design
+
+Security should be designed into the architecture rather than added later.
+
+Authentication, authorization, session management, validation, logging, and future encryption mechanisms should be planned before implementation.
+
+Every new feature should be evaluated for its security impact.
+
+---
+
+## 5. Performance Matters
+
+The project aims to minimize the performance gap between itself and modern messaging platforms.
+
+Rather than building custom networking protocols from scratch, the project will leverage high-performance, modern technologies to maximize efficiency.
+
+Technology choices may evolve over time, but performance remains an architectural priority.
+
+---
+
+## 6. Modular Monolith
+
+The backend will initially be implemented as a **Modular Monolith**.
+
+Each business domain should remain isolated behind clear module boundaries while running inside a single deployable application.
+
+Current reasons include:
+
+* Simpler deployment
+* Easier onboarding for contributors
+* Lower operational complexity
+* Faster development
+* Easier debugging
+
+Modules should remain loosely coupled so they can be extracted into independent services in the future if scaling requirements justify it.
+
+Microservices are considered a future possibility, not an initial goal.
+
+---
+
+## 7. Monorepo
+
+The project uses a monorepo structure.
+
+Benefits include:
+
+* Shared code
+* Shared validation
+* Shared schemas
+* Consistent tooling
+* Easier dependency management
+* Simpler CI/CD
+* Easier deployment
+
+The repository is organized into independent applications and shared packages.
+
+---
+
+## 8. Shared Packages
+
+Common logic should never be duplicated across applications.
+
+Shared packages exist to provide reusable building blocks such as:
+
+* Constants
+* Schemas
+* Validators
+* Shared utilities
+* Shared types
+
+Every shared package should have a single, clearly defined responsibility.
+
+---
+
+## 9. Contributor Experience
+
+The project should remain approachable for contributors.
+
+Architectural decisions should favor:
+
+* Clear project structure
+* Predictable folder organization
+* Consistent coding style
+* Minimal boilerplate
+* Straightforward local development
+
+Reducing contributor friction is considered an architectural goal.
+
+---
+
+## 10. Technology Selection Principles
+
+Technology choices should follow these priorities:
+
+1. Privacy
+2. Security
+3. Performance
+4. Developer Experience
+5. Maintainability
+6. Scalability
+7. Simplicity
+
+Technologies are selected because they help achieve these goals—not because they are new or popular.
+
+Individual technology decisions are documented separately in their own ADRs.
+
+---
+
+# Consequences
+
+## Positive
+
+* Clear architectural direction from the beginning.
+* Consistent decision-making across the project.
+* Easier onboarding for new contributors.
+* Simpler long-term maintenance.
+* Future architectural decisions can reference these principles.
+
+## Negative
+
+* Some architectural choices may prioritize maintainability or privacy over short-term development speed.
+* Future migrations may be required as the project grows.
+* Additional design work is expected before implementing security-sensitive features.
+
+---
+
+# Future Evolution
+
+These principles are expected to remain stable throughout the lifetime of the project.
+
+Individual technologies, frameworks, or implementation details may change, but they should continue to support the architectural principles defined in this document.
+
+Subsequent ADRs should reference this document whenever they introduce significant architectural decisions.
