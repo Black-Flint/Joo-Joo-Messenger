@@ -7,9 +7,11 @@
 		"start": "bun run dist/index.js"
 	},
 	"dependencies": {
+		"@elysia/cors": "^1.4.2",
 		"@joo-joo-messenger/schemas": "workspace:*",
 		"elysia": "^1.4.29",
-		"logixlysia": "^6.6.0"
+		"logixlysia": "^6.6.0",
+		"zod": "^4.4.3"
 	},
 	"devDependencies": {
 		"bun-types": "^1.3.4"

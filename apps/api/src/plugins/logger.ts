@@ -8,7 +8,7 @@ export const logger = (service: Service) => {
 			service, // Service name shown in every log entry
 
 			// Startup
-			showStartupMessage: false,
+			showStartupMessage: true,
 			startupMessageFormat: "simple",
 
 			// Context
