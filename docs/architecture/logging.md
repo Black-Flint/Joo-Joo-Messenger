@@ -397,15 +397,25 @@ Production
 
 # Package Structure
 
-The logging implementation lives in:
+**Status: Implemented** — see [ADR-0002](./adr/0002-logixlysia-logging.md).
+
+The logging implementation currently lives in:
 
 ```
-packages/logger
+apps/api/src/plugins/logger.ts
 ```
 
-The package exposes a single logger instance used throughout the application.
+It exports a `logger(service)` factory. Each service instantiates its own logger by passing its name:
 
-Applications should never instantiate their own logger.
+```ts
+logger("api")
+logger("worker")
+logger("websocket")
+```
+
+The configuration itself (log levels, rotation, format) is centralized inside that one file, so every service stays consistent even though each calls the factory separately.
+
+> A future extraction into a shared `packages/logger` package is possible if multiple deployable services are added (see ADR-0002's Future Considerations), but that has not happened yet — don't import from `packages/logger`, it doesn't exist.
 
 ---
 
