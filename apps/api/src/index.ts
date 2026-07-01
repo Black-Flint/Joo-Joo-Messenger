@@ -1,8 +1,8 @@
 import { Elysia } from "elysia";
+import { connectDB } from "./database";
 import { env } from "./env";
 import { corsConfig as cors } from "./plugins/cors";
 import { logger } from "./plugins/logger";
-import { connectDB } from "./database";
 
 try {
   await connectDB();
