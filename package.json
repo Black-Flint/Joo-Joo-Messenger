@@ -1,20 +1,20 @@
 {
-	"name": "joo-joo-messenger",
-	"private": true,
-	"workspaces": [
-		"apps/*",
-		"packages/*"
-	],
-	"packageManager": "bun",
-	"devDependencies": {
-		"@biomejs/biome": "2.5.1"
-	},
-	"scripts": {
-		"check": "biome check .",
-		"check:fix": "biome check --write .",
-		"dev:web": "bun --filter @joo-joo-messenger/web dev",
-		"dev:api": "bun --filter @joo-joo-messenger/api dev",
-		"build:web": "bun --filter @joo-joo-messenger/web build",
-		"build:api": "bun --filter @joo-joo-messenger/api build"
-	}
+  "name": "joo-joo-messenger",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "packageManager": "bun",
+  "devDependencies": {
+    "@biomejs/biome": "2.5.1"
+  },
+  "scripts": {
+    "check": "biome check .",
+    "check:fix": "biome check --write .",
+    "dev:web": "bun --filter @joo-joo-messenger/web dev",
+    "dev:api": "bun --filter @joo-joo-messenger/api dev",
+    "build:web": "bun --filter @joo-joo-messenger/web build",
+    "build:api": "bun --filter @joo-joo-messenger/api build"
+  }
 }
