@@ -11,9 +11,8 @@ services:
   # PostgreSQL Database Service
   postgres:
     image: postgres:17-bookworm # Stable PostgreSQL image (Debian-based)
-    container_name: joo-joo-postgres
 
-    restart: always # Restart always
+    restart: always #  Always restart the container if it stops
 
     expose:
       - "5432"
@@ -22,7 +21,7 @@ services:
       - infra/docker/.env
 
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U {POSTGRES_USER} -d {POSTGRES_DB}"]
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
       interval: 15s
       timeout: 5s
       retries: 5
@@ -39,3 +38,59 @@ services:
       options:
         max-size: "10m" # Rotate logs after 10MB
         max-file: "5" # Keep max 5 log files
+
+  api:
+    build:
+      context: .
+      dockerfile: infra/docker/api.dockerfile
+
+    restart: always #  Always restart the container if it stops
+
+    env_file:
+      - apps/api/.env
+
+    healthcheck:
+      test: ["CMD", "bun", "-e", "fetch('http://localhost:4000/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+
+    expose:
+      - "${PORT:-4000}"
+
+    networks:
+      - app-network # Internal app network
+
+    depends_on:
+      postgres:
+        condition: service_healthy
+    
+    logging:
+      driver: json-file # Default Docker logging driver
+      options:
+        max-size: "10m" # Rotate logs after 10MB
+        max-file: "5" # Keep max 5 log files
+
+  web:
+    build:
+      context: .
+      dockerfile: infra/docker/web.dockerfile
+
+    restart: always #  Always restart the container if it stops
+
+    expose:
+      - 3000
+
+    networks:
+      - app-network # Internal app network
+
+    depends_on:
+      api:
+        condition: service_healthy
+
+    logging:
+      driver: json-file # Default Docker logging driver
+      options:
+        max-size: "10m" # Rotate logs after 10MB
+        max-file: "5" # Keep max 5 log files
+    
