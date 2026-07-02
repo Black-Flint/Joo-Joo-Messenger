@@ -173,31 +173,66 @@ bun install
 
 ### Configure Environment Variables
 
+Joo-Joo Messenger uses **service-specific environment files** rather than a single global `.env` file.
+
+Each application or infrastructure component manages its own environment configuration.
+
+| Component         | Environment File    |
+| ----------------- | ------------------- |
+| API               | `apps/api/.env`     |
+| Web   (Optinal)   | `apps/web/.env`     |
+| Docker Compose    | `infra/docker/.env` |
+
+Copy the appropriate example file(s) before running the project:
+
 ```bash
-cp .env.example .env
+cp apps/api/.env.example apps/api/.env
+cp infra/docker/.env.example infra/docker/.env
 ```
 
-Update the values inside `.env`.
+Refer to each `.env.example` file for the required configuration values.
 
-### Start Infrastructure
+---
+
+### Development with Docker (Recommended)
+
+Start the complete development environment:
 
 ```bash
-docker compose -f docker-compose.dev.yml up -d
+docker compose up --build
 ```
 
-### Start the Backend
+---
+
+### Local Development
+
+Start the PostgreSQL container:
+
+```bash
+docker compose up -d postgres
+```
+
+Run the API:
 
 ```bash
 bun run dev:api
 ```
 
-### Start the Frontend
+Run the Web application:
 
 ```bash
 bun run dev:web
 ```
 
 ---
+
+### Production
+
+Build and start the production environment:
+
+```bash
+docker compose -f docker-compose.prod.yml up -d --build
+```
 
 ## Project Structure
 
@@ -220,12 +255,10 @@ bun run dev:web
 │   ├── schemas/
 │   └── validators/
 ├── .dockerignore
-├── .editorconfig
-├── .env.example
 ├── .gitignore
 ├── biome.json
 ├── bun.lock
-├── docker-compose.dev.yml
+├── docker-compose.yml
 ├── docker-compose.prod.yml
 ├── package.json
 ├── CODE_OF_CONDUCT.md

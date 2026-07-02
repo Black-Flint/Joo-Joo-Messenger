@@ -36,56 +36,89 @@ If you'd like to work on an issue, please leave a comment first so maintainers k
 
 ---
 
-# Development Setup
+## Getting Started
 
-## Requirements
+### Requirements
 
-- Bun
-- Docker
-- Docker Compose
+* Bun
+* Docker
+* Docker Compose
 
-## Clone the Repository
-
-Fork the repository, then clone your fork:
+### Clone the Repository
 
 ```bash
 git clone https://github.com/Black-Flint/Joo-Joo-Messenger.git
 cd Joo-Joo-Messenger
 ```
 
-## Install Dependencies
+### Install Dependencies
 
 ```bash
 bun install
 ```
 
-## Configure Environment Variables
+### Configure Environment Variables
+
+Joo-Joo Messenger uses **service-specific environment files** rather than a single global `.env` file.
+
+Each application or infrastructure component manages its own environment configuration.
+
+| Component         | Environment File    |
+| ----------------- | ------------------- |
+| API               | `apps/api/.env`     |
+| Web   (Optinal)   | `apps/web/.env`     |
+| Docker Compose    | `infra/docker/.env` |
+
+Copy the appropriate example file(s) before running the project:
 
 ```bash
-cp .env.example .env
+cp apps/api/.env.example apps/api/.env
+cp infra/docker/.env.example infra/docker/.env
 ```
 
-Update the values inside `.env` as needed for your local environment.
+Refer to each `.env.example` file for the required configuration values.
 
-## Start Infrastructure
+---
+
+### Development with Docker (Recommended)
+
+Start the complete development environment:
 
 ```bash
-docker compose -f docker-compose.dev.yml up -d
+docker compose up --build
 ```
 
-## Start the Backend
+---
+
+### Local Development
+
+Start the PostgreSQL container:
+
+```bash
+docker compose up -d postgres
+```
+
+Run the API:
 
 ```bash
 bun run dev:api
 ```
 
-## Start the Frontend
+Run the Web application:
 
 ```bash
 bun run dev:web
 ```
 
 ---
+
+### Production
+
+Build and start the production environment:
+
+```bash
+docker compose -f docker-compose.prod.yml up -d --build
+```
 
 # Development Workflow
 
